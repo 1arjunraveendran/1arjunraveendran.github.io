@@ -485,9 +485,10 @@ footer .egg kbd{border:1px solid var(--line);border-radius:4px;padding:1px 6px;f
     <p class="reveal">I'm always up for talking about interesting problems, good teams, or why my
       fraud model side-eyes your 3 a.m. purchases. My inbox is open.</p>
     <div class="reveal">
-      <a class="btn primary" href="mailto:arjun01raveendran@gmail.com">Say hello</a>
+      <a class="btn primary" id="sayHello" href="mailto:arjun01raveendran@gmail.com">Say hello</a>
       <button class="btn" id="copyEmail" style="margin-left:10px">Copy email</button>
     </div>
+    <p class="reveal" style="font-family:var(--mono);font-size:13px;color:var(--faint);margin:18px auto 0">arjun01raveendran@gmail.com</p>
     <div class="links-row reveal">
       <a href="https://www.linkedin.com/in/arjun-bharadwaj-raveendran-689a61276/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="Arjun_Bharadwaj_Raveendran_Resume.pdf" download>Résumé</a>
@@ -634,6 +635,9 @@ function showToast(m){toast.textContent=m;toast.classList.add("show");
 $("#copyEmail").addEventListener("click",async()=>{
   try{await navigator.clipboard.writeText("arjun01raveendran@gmail.com");showToast("email copied — talk soon");}
   catch{showToast("it's arjun01raveendran@gmail.com");}});
+$("#sayHello").addEventListener("click",()=>{
+  try{navigator.clipboard.writeText("arjun01raveendran@gmail.com");}catch(e){}
+  showToast("opening mail app — address copied just in case");});
 
 /* ---------- fraud lab ---------- */
 const dAmt=$("#dAmt"),dHr=$("#dHr"),dDev=$("#dDev"),gauge=$("#gaugeFill"),verdict=$("#verdict"),jsonOut=$("#jsonOut");
