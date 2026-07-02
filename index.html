@@ -690,10 +690,14 @@ function loop(){
     if(bird.x+11>p.x&&bird.x-11<p.x+52&&(bird.y-11<p.top||bird.y+11>p.top+p.gap))return die();}
   if(pipes[0].x<-60){pipes.shift();spawn();}
   if(bird.y>H-10||bird.y<0)return die();
-  g.font="20px monospace";g.textAlign="center";
   g.save();g.translate(bird.x,bird.y);g.rotate(Math.min(bird.v/10,.6));
-  g.shadowColor="#ffe066";g.shadowBlur=18;
-  g.fillText("🐤",0,7);g.restore();
+  g.shadowColor="#ffe600";g.shadowBlur=26;
+  g.fillStyle="#ffe600";g.beginPath();g.arc(0,0,10,0,6.29);g.fill();
+  g.shadowBlur=0;
+  g.fillStyle="#ffb700";g.beginPath();g.ellipse(-3,2,5,3.5,-.4,0,6.29);g.fill();
+  g.fillStyle="#071018";g.beginPath();g.arc(4.5,-3,2.2,0,6.29);g.fill();
+  g.fillStyle="#ff8a00";g.beginPath();g.moveTo(9,-1);g.lineTo(15.5,1.5);g.lineTo(9,4.5);g.closePath();g.fill();
+  g.restore();
   scoreEl.textContent=`SCORE ${scoreN} · BEST ${best}`;
   raf=requestAnimationFrame(loop);}
 function die(){cancelAnimationFrame(raf);state="over";best=Math.max(best,scoreN);
